@@ -5,7 +5,7 @@ import ScrollToTop from './components/ScrollToTop';
 import StartPage from './pages/StartPage';
 import { useEffect, useState } from 'react';
 import { getFromStorage } from './utils/storage';
-import users from './users';
+import users from './constants/users';
 import HomePage from './pages/HomePage';
 
 const APP_ID = '1241926';

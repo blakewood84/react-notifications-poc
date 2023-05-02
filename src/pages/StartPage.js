@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import users from '../users';
+import users from '../constants/users';
 import { saveToStorage } from '../utils/storage';
 
 const Main = styled.main`
