@@ -57,39 +57,55 @@ const Block = styled.div`
 `;
 
 export default function TrackLikedNotification({ trackActivities }) {
-  console.log(trackActivities);
+  const trackGroup = {};
+
   const firstActivity = trackActivities[0];
 
-  const track = tracks.find((track) => firstActivity.trackId === track.id);
+  trackActivities.forEach((act) => {
+    if (act.trackId in trackGroup) {
+      trackGroup[act.trackId].push(act);
+    } else trackGroup[act.trackId] = [act];
+  });
 
   return (
-    <Block>
-      <Upload color="#1c9bef" size={25} />
-      <div className="right">
-        <div className="actors__images">
-          {trackActivities.map((track) => {
-            return (
-              <Link
-                to={`/${track.actor.id}`}
-                className="actors__images__image"
-                key={track.id}
-              >
-                <img src={track.actor.data.image} alt="" />
-              </Link>
-            );
-          })}
-        </div>
-        <p className="actors__text">
-          <Link className="actors__name" to={`/${firstActivity.actor.id}`}>
-            {firstActivity.actor.data.name}
-          </Link>{' '}
-          <span>
-            {trackActivities.length > 1 &&
-              `and ${trackActivities.length - 1} others`}{' '}
-            liked {track.name}
-          </span>
-        </p>
-      </div>
-    </Block>
+    <>
+      {Object.keys(trackGroup).map((groupKey) => {
+        const activities = trackGroup[groupKey];
+        const lastActivity = activities[0];
+
+        const track = tracks.find((track) => lastActivity.trackId === track.id);
+
+        return (
+          <Block>
+            <Upload color="#1c9bef" size={25} />
+            <div className="right">
+              <div className="actors__images">
+                {activities.map((track) => {
+                  return (
+                    <Link
+                      to={`/${track.actor.id}`}
+                      className="actors__images__image"
+                      key={track.id}
+                    >
+                      <img src={track.actor.data.image} alt="" />
+                    </Link>
+                  );
+                })}
+              </div>
+              <p className="actors__text">
+                <Link className="actors__name" to={`/${lastActivity.actor.id}`}>
+                  {lastActivity.actor.data.name}
+                </Link>{' '}
+                <span>
+                  {activities.length > 1 &&
+                    `and ${activities.length - 1} others`}{' '}
+                  liked {track.name}
+                </span>
+              </p>
+            </div>
+          </Block>
+        );
+      })}
+    </>
   );
 }
