@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import ProfileIcon from './ProfileIcon';
 
 const Container = styled.div`
   color: white;
@@ -8,12 +9,18 @@ const Container = styled.div`
     height: 50px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 
     .left {
+      margin-left: 10px;
       display: flex;
       span {
         margin-left: 10px;
       }
+    }
+
+    .right {
+      margin-right: 10px;
     }
   }
 `;
@@ -26,7 +33,9 @@ export default function NavBar() {
           <span>Discover</span>
           <span>My Library</span>
         </div>
-        <div className="right"></div>
+        <div className="right">
+          <ProfileIcon />
+        </div>
       </div>
     </Container>
   );
