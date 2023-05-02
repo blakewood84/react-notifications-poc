@@ -17,10 +17,12 @@ const Container = styled.div`
 
   .main-content {
     position: relative;
-    min-height: 100vh;
     display: flex;
     width: 100%;
     justify-content: center;
+    min-height: 100vh;
+    margin-top: -50px;
+    padding-top: 55px;
 
     h1 {
       color: white;
