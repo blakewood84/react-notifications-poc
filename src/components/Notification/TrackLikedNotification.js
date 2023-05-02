@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import User from '../Icons/User';
+import tracks from '../../constants/tracks';
+
+import Upload from '../Icons/Upload';
 
 const Block = styled.div`
   padding: 15px;
@@ -58,9 +60,12 @@ export default function TrackLikedNotification({ trackActivities }) {
   const firstActivity = trackActivities[0];
   console.log('trackActivities: ', trackActivities);
 
+  const track = tracks.find((track) => firstActivity.trackId === track.id);
+  console.log('track: ', track);
+
   return (
     <Block>
-      <User color="#1c9bef" size={25} />
+      <Upload color="#1c9bef" size={25} />
       <div className="right">
         <div className="actors__images">
           {trackActivities.map((track) => {
@@ -82,7 +87,7 @@ export default function TrackLikedNotification({ trackActivities }) {
           <span>
             {trackActivities.length > 1 &&
               `and ${trackActivities.length - 1} others`}{' '}
-            liked your track
+            liked {track.name}
           </span>
         </p>
       </div>

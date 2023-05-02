@@ -54,7 +54,7 @@ export default function HomeContent() {
                       createNotification(
                         track.artist,
                         'track',
-                        { trackId: track.id, actor: user.id },
+                        { trackId: track.id, actor: `SU:${user.id}` },
                         `SO:track:${track.id}`
                       );
                     } else {
