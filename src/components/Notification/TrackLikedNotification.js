@@ -57,11 +57,10 @@ const Block = styled.div`
 `;
 
 export default function TrackLikedNotification({ trackActivities }) {
+  console.log(trackActivities);
   const firstActivity = trackActivities[0];
-  console.log('trackActivities: ', trackActivities);
 
   const track = tracks.find((track) => firstActivity.trackId === track.id);
-  console.log('track: ', track);
 
   return (
     <Block>
