@@ -1,9 +1,8 @@
 import { useStreamContext } from 'react-activity-feed';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
 const Container = styled.div`
-  cursor: pointer;
-
   .user-image {
     width: 40px;
     height: 40px;
@@ -16,17 +15,27 @@ const Container = styled.div`
       width: 100%;
       height: 100%;
       object-fit: cover;
+      cursor: pointer;
     }
   }
 `;
 
 export default function ProfileIcon() {
+  const navigate = useNavigate();
   const { user } = useStreamContext();
 
   return (
     <Container>
       <div className="user-image">
-        <img src={user.data.image} alt="" />
+        {user.data && (
+          <img
+            src={user.data.image}
+            alt="Profile Icon"
+            onClick={() => {
+              navigate('/notifications');
+            }}
+          />
+        )}
       </div>
     </Container>
   );

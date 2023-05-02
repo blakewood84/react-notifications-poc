@@ -21,7 +21,7 @@ const tracks = [
     id: 4,
     name: 'Boom Shakalaka - Single',
     artist: 'jake',
-    image: 'https://picsum.photos/id/237/200/200',
+    image: 'https://picsum.photos/id/240/200/200',
   },
 ];
 

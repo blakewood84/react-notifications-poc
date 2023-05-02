@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import { getFromStorage } from './utils/storage';
 import users from './constants/users';
 import HomePage from './pages/HomePage';
+import Notifications from './pages/Notifications';
 
 const APP_ID = '1241926';
 const API_KEY = 'x2u4y9padhyg';
@@ -39,6 +40,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<StartPage />} />
           <Route path="/home" element={<HomePage />} />
+          <Route path="/notifications" element={<Notifications />} />
         </Routes>
       </Router>
     </StreamApp>

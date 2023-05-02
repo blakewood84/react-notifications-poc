@@ -3,7 +3,7 @@ import ProfileIcon from './ProfileIcon';
 
 const Container = styled.div`
   color: white;
-
+  z-index: 100;
   .navbar {
     border-bottom: 1px solid orange;
     height: 50px;
@@ -16,6 +16,7 @@ const Container = styled.div`
       display: flex;
       span {
         margin-left: 10px;
+        cursor: pointer;
       }
     }
 
